@@ -185,6 +185,8 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .facts .what span { display: inline-block; }
 .facts .ver { margin: 0 0 22px; color: var(--ink-2); }
 .facts .ver .num { color: var(--ink); font-size: 17px; }
+.facts .use { margin: -8px 0 22px; }   /* what the current version is mainly for, right under its number */
+.facts .use span { display: inline-block; }   /* break between phrases, not inside a word */
 .links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0; padding: 0; list-style: none; font-weight: 500; }
 
 /* the manual's measured results, all four rows, after their conditions */
