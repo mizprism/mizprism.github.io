@@ -1,0 +1,278 @@
+/* The frame: white light, a pure blue mass, the photo seen through glass. */
+
+@font-face {
+  font-family: 'Lexend Zetta';
+  font-style: normal;
+  font-weight: 200;
+  font-display: block;           /* the subtitle comes up once, in its own face (no second change) */
+  src: url(fonts/lexend-zetta/lexend-zetta-latin-200-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans/ibm-plex-sans-latin-300-normal.woff2) format('woff2');
+}
+
+:root {
+  --white: #FFFFFF;
+  --recede: #F5F5FA;
+  --line: #E8E8F2;
+  --rule: #DCDCEB;
+  --ink: #0B0B14;
+  --ink-2: #4B4B60;
+  --mizfr-blue: #0500FF;           /* the MizFR wordmark's own colour: "World" under it matches it */
+  --blue: #3D3AE0;                 /* the site's one colour (the BOOTH shop's link colour, 2026-11-07); product logos keep their own pure blue */
+  --snap: cubic-bezier(0.7, 0, 0.2, 1);
+  --S: min(100vw, 100vh);           /* set in px by page.js */
+  --o: calc(var(--S) * 0.0475);     /* white outside the glass */
+  --t: calc(var(--S) * 0.030);      /* the glass */
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--white); }
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  font-synthesis: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+a { color: var(--blue); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+a:visited { color: var(--blue); }
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+::selection { background: var(--blue); color: var(--white); }
+
+.num { font-family: 'IBM Plex Sans', 'IBM Plex Sans JP', sans-serif; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: 0; }
+
+/* ---- glass (glass.js fills each strip) ---- */
+.glass { position: absolute; overflow: hidden; z-index: 2; }
+.glass-copy { position: absolute; background-repeat: no-repeat; }
+.glass-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+/* light from above: a bright upper lip and a faint lower one, across the strip */
+.glass.h .glass-light {
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,0.42) 0, rgba(255,255,255,0.10) 22%, rgba(255,255,255,0) 46%,
+                    rgba(255,255,255,0) 70%, rgba(255,255,255,0.20) 100%),
+    rgba(255, 255, 255, 0.12);
+}
+.glass.v .glass-light {
+  background:
+    linear-gradient(to right, rgba(255,255,255,0.36) 0, rgba(255,255,255,0.08) 24%, rgba(255,255,255,0) 48%,
+                    rgba(255,255,255,0) 72%, rgba(255,255,255,0.18) 100%),
+    rgba(255, 255, 255, 0.12);
+}
+.shade { position: absolute; z-index: 1; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10); }
+
+/* ---- ✦ ---- */
+.spark { display: block; position: absolute; fill: var(--blue); }
+.spark.white { fill: var(--white); }
+
+/* ---- first screen ---- */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 480px;
+  overflow: hidden;
+}
+.hero .b-top, .hero .s-top       { left: var(--o); right: var(--o); top: var(--o); height: var(--t); }
+.hero .b-bottom, .hero .s-bottom { left: var(--o); right: var(--o); bottom: var(--o); height: var(--t); }
+.hero .b-left, .hero .s-left     { left: var(--o); top: calc(var(--o) + var(--t)); bottom: calc(var(--o) + var(--t)); width: var(--t); }
+.hero .b-right, .hero .s-right   { right: var(--o); top: calc(var(--o) + var(--t)); bottom: calc(var(--o) + var(--t)); width: var(--t); }
+.hero .b-top .spark { width: calc(var(--t) * 1.2); height: calc(var(--t) * 0.9); left: 71%; top: 5%; z-index: 1; }
+
+.opening {
+  position: absolute;
+  inset: calc(var(--o) + var(--t));
+  padding: 24px;
+  display: grid;
+  place-items: center;
+}
+/* One column, as on a card: the logo, one sentence, a line, the four places on this site as blocks
+   of one width, the two places elsewhere, a line, the note. Everything shares the column's width and
+   its centre line. */
+.hero { --card-w: 400px; }
+.card { width: min(var(--card-w), 100%); display: grid; justify-items: center; text-align: center; }
+.mark-wrap { position: relative; width: 100%; }
+.logo { margin: 0; line-height: 0; }
+.logo img { display: block; width: 100%; height: auto; }
+.mark-wrap .spark { width: 24px; height: 18px; right: -14px; top: -16px; }   /* the star is 1.32 times as wide as it is tall */
+.lead { margin: 20px 0 0; font-size: 14px; line-height: 1.8; color: var(--ink-2); }
+.lead span { display: inline-block; }
+.rule { width: 100%; height: 1px; margin: 26px 0; border: 0; background: var(--line); }
+.go { width: 100%; display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.go a {
+  display: block;
+  height: 52px;
+  line-height: 52px;
+  background: var(--blue);
+  color: var(--white);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.go a:visited { color: var(--white); }
+.go a:hover { background: var(--white); color: var(--blue); box-shadow: inset 0 0 0 2px var(--blue); }
+.elsewhere { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 32px; margin: 22px 0 0; padding: 0; list-style: none;
+  font-family: 'Lexend Zetta', sans-serif; font-weight: 200; font-size: 13px; line-height: 1.6; letter-spacing: 0.3em; }
+.elsewhere a { margin-right: -0.3em; }
+.note { margin: 0; font-size: 12px; line-height: 1.6; color: var(--ink-2); }
+
+/* a narrow screen: the three places elsewhere stay on one line (they took two at 320 px) */
+@media (max-width: 360px) {
+  .elsewhere { gap: 8px 18px; letter-spacing: 0.18em; }
+  .elsewhere a { margin-right: -0.18em; }
+}
+
+/* a low screen: the column is shortened (lower blocks, less room around the lines) so it stays
+   inside the frame's opening, down to 1280 x 609 */
+@media (max-height: 720px) {
+  .go { gap: 8px; }
+  .go a { height: 42px; line-height: 42px; }
+  .rule { margin: 16px 0; }
+  .lead { margin-top: 12px; }
+  .elsewhere { margin-top: 14px; }
+}
+
+/* the first screen comes up out of the white: hold 240 ms, then 120 ms */
+@keyframes rise { 0%, 66.67% { opacity: 0; transform: translateX(-0.06em); } 100% { opacity: 1; transform: none; } }
+@keyframes rise-flat { 0%, 66.67% { opacity: 0; transform: scaleX(1.08); } 100% { opacity: 1; transform: none; } }
+@keyframes pop { 0%, 66.67% { opacity: 0; transform: scale(0); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes twinkle { 0%, 91.67% { transform: scale(1) rotate(0deg); } 95.83% { transform: scale(0.62) rotate(45deg); } 100% { transform: scale(1) rotate(90deg); } }
+.logo { animation: rise 360ms var(--snap) both; }
+.mark-wrap .spark { animation: pop 360ms steps(3, end) 720ms both, twinkle 2880ms steps(1, end) 1080ms infinite; transform-origin: 50% 50%; }
+@media (prefers-reduced-motion: reduce) {
+  .logo, .mark-wrap .spark { animation: none; }
+}
+
+/* ---- the strips between sections ---- */
+.strip-row { position: relative; height: calc(var(--t) * 0.55); margin: 0 var(--o); }
+.strip-row .glass, .strip-row .shade { inset: 0; }
+
+/* ---- products ---- */
+.product { padding: clamp(72px, 10vw, 140px) calc(var(--o) + var(--t)) clamp(72px, 10vw, 140px); }
+.product-in { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px 64px; align-items: center; }
+.product h2 { margin: 0; font-weight: 700; line-height: 1; }
+.wordmark { display: block; width: 100%; height: auto; filter: url(#mark-clean); }
+.product .thin {
+  display: block;
+  margin: 0.3em 0 0;
+  font-family: 'Lexend Zetta', sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.4em;
+  color: var(--blue);
+  text-align: center;
+  line-height: 1.2;
+}
+.mizfr .thin { font-size: clamp(2rem, 4.6vw, 4.5rem); margin-top: -0.35em; color: var(--mizfr-blue); }
+.mizeye-name { display: block; font-family: 'IBM Plex Sans JP', sans-serif; font-weight: 700; font-size: clamp(4.5rem, 13vw, 11.25rem); color: var(--blue); letter-spacing: 0; line-height: 1; }
+.mizeye .thin { font-size: clamp(0.9rem, 2.4vw, 2.25rem); text-align: left; margin-top: 0.5em; }   /* 1/5 of the name or less */
+.facts { margin: 0; }
+.facts .what { margin: 0 0 18px; font-size: 22px; font-weight: 500; line-height: 1.6; }
+.facts .what span { display: inline-block; }
+.facts .ver { margin: 0 0 22px; color: var(--ink-2); }
+.facts .ver .num { color: var(--ink); font-size: 17px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0; padding: 0; list-style: none; font-weight: 500; }
+
+/* the manual's measured results, all four rows, after their conditions */
+.measure { grid-column: 1 / -1; padding-top: 22px; border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.75; color: var(--ink-2); }
+.measure p { margin: 0; }
+.measure .cond { max-width: 52em; margin-bottom: 14px; }
+.measure .from { margin-top: 10px; }
+.results { border-collapse: collapse; width: 100%; font-size: 14px; line-height: 1.7; color: var(--ink); }
+.results th, .results td { text-align: left; vertical-align: top; padding: 9px 14px 9px 0; border-bottom: 1px solid var(--rule); }
+.results th { font-weight: 500; color: var(--ink-2); font-size: 13px; }
+.results td:first-child { width: 26%; } .results td:nth-child(2) { width: 30%; }
+
+/* ---- contact and foot ---- */
+.contact { padding: clamp(64px, 8vw, 112px) calc(var(--o) + var(--t)); }
+.contact-in, .foot-in { max-width: 1240px; margin: 0 auto; }
+.contact h2 { margin: 0 0 16px; font-size: 30px; font-weight: 500; line-height: 1.5; }
+.contact p { margin: 0; }
+.foot { padding: 28px calc(var(--o) + var(--t)) calc(var(--o) + 28px); font-size: 13px; line-height: 1.8; color: var(--ink-2); }
+.foot p { margin: 0; }
+
+@media (max-width: 760px) {
+  .product-in { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .facts .what { font-size: 19px; }
+}
+
+/* ---- the manual ---- */
+.top-strip { position: relative; height: var(--t); margin: var(--o) var(--o) 0; }
+.top-strip .glass, .top-strip .shade { inset: 0; }
+.man-head { padding: clamp(40px, 6vw, 72px) calc(var(--o) + var(--t)) 0; }
+.man-head-in { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 40px; }
+.man-mark { display: block; width: clamp(240px, 34vw, 460px); }
+.man-mark .wordmark { width: 100%; }
+.man-mark .thin { display: block; font-family: 'Lexend Zetta', sans-serif; font-weight: 200; letter-spacing: 0.4em; color: var(--mizfr-blue); text-align: center; font-size: clamp(1.25rem, 2.4vw, 2rem); margin-top: -0.3em; line-height: 1.2; }
+.man-side { display: grid; gap: 10px; justify-items: end; text-align: right; font-size: 13px; line-height: 1.6; color: var(--ink-2); }
+.manual {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 56px calc(var(--o) + var(--t)) 120px;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 38em);
+  gap: 56px;
+  justify-content: start;
+}
+.toc-fold { position: sticky; top: 28px; }
+.toc summary { display: none; }
+.toc ul { list-style: none; margin: 0; padding: 0; font-size: 14px; line-height: 1.6; }
+.toc li + li { margin-top: 10px; }
+.toc a { color: var(--ink); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.toc a[aria-current="true"] { color: var(--blue); text-decoration: underline; }
+.doc { min-width: 0; }
+.doc h1 { font-size: 30px; font-weight: 500; line-height: 1.5; margin: 0 0 48px; word-break: keep-all; overflow-wrap: anywhere; }
+.doc h2 { font-size: 22px; font-weight: 500; line-height: 1.5; margin: 88px 0 20px; padding-top: 20px; border-top: 1px solid var(--rule); scroll-margin-top: 24px; }
+.doc h3 { font-size: 18px; font-weight: 500; line-height: 1.5; margin: 48px 0 12px; scroll-margin-top: 24px; }
+.doc h1 + h2 { margin-top: 0; }
+.doc p { margin: 0 0 1.1em; }
+.doc ul, .doc ol { margin: 0 0 1.2em; padding-left: 1.6em; }
+.doc li + li { margin-top: 0.35em; }
+.doc .table { overflow-x: auto; margin: 8px 0 28px; }
+.doc table { border-collapse: collapse; width: 100%; font-size: 15px; line-height: 1.75; }
+.doc th, .doc td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+.doc th { font-weight: 500; background: var(--recede); }
+.man-foot { max-width: 1240px; margin: 0 auto; padding: 24px calc(var(--o) + var(--t)) 48px; font-size: 13px; color: var(--ink-2); }
+.man-foot p { margin: 0; }
+
+@media (max-width: 860px) {
+  .manual { display: block; padding-top: 32px; }
+  .toc { margin-bottom: 40px; }
+  .toc-fold { position: static; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .toc summary { display: block; padding: 10px 0; font-weight: 500; cursor: pointer; color: var(--blue); }
+  .toc ul { padding: 4px 0 16px; }
+  .doc table { min-width: 520px; }
+  .man-side { justify-items: start; text-align: left; }
+}
+
+/* narrow screens: each row of a table becomes a block. The first cell names the row; the others
+   follow it, each led by its column's heading. */
+@media (max-width: 560px) {
+  .doc table, .results { min-width: 0; }
+  .doc thead, .results thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .doc tr, .results tr { display: block; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .doc td, .results td, .results td:first-child, .results td:nth-child(2) { display: block; width: auto; padding: 0; border: 0; }
+  .doc td:first-child, .results td:first-child { font-weight: 500; }
+  .doc td + td, .results td + td { margin-top: 4px; }
+  .doc td + td::before, .results td + td::before { content: attr(data-label); margin-right: 0.9em; font-size: 12px; color: var(--ink-2); }
+  .doc td:empty, .results td:empty { display: none; }
+}

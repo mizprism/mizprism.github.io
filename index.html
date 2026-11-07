@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MIZPRISM</title>
+<meta name="description" content="MIZPRISM の公式サイト。MizFR World と MizEye の紹介と、MizFR World の説明書の全文を載せています。">
+<link rel="canonical" href="https://mizprism.github.io/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MIZPRISM">
+<meta property="og:title" content="MIZPRISM">
+<meta property="og:description" content="MIZPRISM の公式サイト。MizFR World と MizEye の紹介と、MizFR World の説明書の全文を載せています。">
+<meta property="og:url" content="https://mizprism.github.io/">
+<meta property="og:image" content="https://mizprism.github.io/assets/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MIZPRISM のロゴと「&quot;テクノロジーってかわいい&quot;をモットーとしています」の一文">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mizprism">
+<link rel="stylesheet" href="fonts/ibm-plex-sans-jp/300.css">
+<link rel="stylesheet" href="fonts/ibm-plex-sans-jp/500.css">
+<link rel="stylesheet" href="fonts/ibm-plex-sans-jp/700.css">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs id="glass-defs">
+    <!-- ✦: the star of the MizFR wordmark (its long arm to the right), slanted 26 degrees as the wordmark is -->
+    <symbol id="spark" viewBox="-0.97 -1.03 2.72 2.06"><path d="M0.4877,-1.0000 Q0.1768,-0.0800 1.7222,0.0000 Q0.0988,0.0800 -0.4877,1.0000 Q-0.1146,0.0800 -0.9444,0.0000 Q-0.0365,-0.0800 0.4877,-1.0000 Z"/></symbol>
+    <!-- The MizFR wordmark without its sticker layers (the white outline and the pale shadow), as on
+         the BOOTH image: keep the pure blue, turn anything lighter than it to white. On white only. -->
+    <filter id="mark-clean" color-interpolation-filters="sRGB">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="2.6" intercept="-0.032"/>
+        <feFuncG type="linear" slope="2.6" intercept="0"/>
+        <feFuncB type="identity"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+</svg>
+
+<header class="hero" id="top">
+  <div class="shade s-top"></div><div class="shade s-bottom"></div><div class="shade s-left"></div><div class="shade s-right"></div>
+  <div class="glass h b-top" data-field="#top" data-zoom="1.5" data-focus="0.6 0"><svg class="spark white" aria-hidden="true"><use href="#spark"/></svg></div>
+  <div class="glass h b-bottom" data-field="#top" data-zoom="1.5" data-focus="0.6 1" data-rows></div>
+  <div class="glass v b-left" data-field="#top" data-zoom="1.5" data-focus="0.48 0.5" data-rows></div>
+  <div class="glass v b-right" data-field="#top" data-zoom="1.5" data-focus="1 0.4"></div>
+
+  <div class="opening">
+    <div class="card">
+      <div class="mark-wrap">
+        <h1 class="logo"><img src="assets/logo-line.svg" alt="MIZPRISM"></h1>
+        <svg class="spark" aria-hidden="true"><use href="#spark"/></svg>
+      </div>
+      <p class="lead"><span>"テクノロジーってかわいい"を</span><span>モットーとしています</span></p>
+      <hr class="rule">
+      <ul class="go" aria-label="行き先">
+        <li><a href="#mizfr">MizFR World</a></li>
+        <li><a href="#mizeye">MizEye</a></li>
+        <li><a href="manual.html">説明書</a></li>
+        <li><a href="#contact">問い合わせ</a></li>
+      </ul>
+      <ul class="elsewhere" aria-label="ほかの場所">
+        <li><a href="https://mizprism.booth.pm/">BOOTH</a></li>
+        <li><a href="https://x.com/mizprism">X</a></li>
+        <li><a href="https://github.com/mizprism">GitHub</a></li>
+      </ul>
+      <hr class="rule">
+      <p class="note">ロゴは仮の文字です</p>
+    </div>
+  </div>
+</header>
+
+<div class="strip-row" aria-hidden="true"><div class="shade"></div><div class="glass h" data-zoom="1.5" data-focus="0.62 0.12"></div></div>
+
+<section class="product mizfr" id="mizfr" aria-labelledby="mizfr-name">
+  <div class="product-in">
+    <h2 id="mizfr-name"><img class="wordmark" src="assets/mizfr-wordmark.svg" width="2400" height="780" alt="MizFR"><span class="thin">World</span></h2>
+    <div class="facts">
+      <p class="what"><span>VRChat ワールド向けの</span><span>描画最適化ツール</span></p>
+      <p class="ver">Ver <span class="num">0.4.4</span> (<span class="num">2026/11/07</span>)</p>
+      <ul class="links">
+        <li><a href="https://booth.pm/ja/items/8826164">BOOTH の商品ページ</a></li>
+        <li><a href="manual.html">説明書 (全文)</a></li>
+      </ul>
+    </div>
+    <div class="measure">
+      <p>測定の結果は、条件つきで <a href="https://github.com/mizprism/mizfr/blob/main/MEASUREMENTS.md">GitHub のページ</a>にまとめています。</p>
+    </div>
+  </div>
+</section>
+
+<div class="strip-row" aria-hidden="true"><div class="shade"></div><div class="glass h" data-zoom="1.5" data-focus="0.9 0.4"></div></div>
+
+<section class="product mizeye" id="mizeye" aria-labelledby="mizeye-name">
+  <div class="product-in">
+    <h2 id="mizeye-name"><span class="mizeye-name">MizEye</span><span class="thin">v0.1.2</span></h2>
+    <div class="facts">
+      <p class="what">やさしい規約ビューア</p>
+      <p class="ver"><span class="num">v0.1.2</span> (GitHub Releases、<span class="num">2026-08-21</span>)</p>
+      <ul class="links">
+        <li><a href="https://github.com/mizprism/mizeye">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="strip-row" aria-hidden="true"><div class="shade"></div><div class="glass h" data-zoom="1.5" data-focus="0.78 0.18"></div></div>
+
+<section class="contact" id="contact" aria-labelledby="contact-title">
+  <div class="contact-in">
+    <h2 id="contact-title">問い合わせ</h2>
+    <p>BOOTH の<a href="https://mizprism.booth.pm/">ショップのページ</a>のメッセージか、X の <a href="https://x.com/mizprism">@mizprism</a> からお送りください。</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <p>背景の写真は、ChatGPT で生成した画像を使用しています。</p>
+    <p>MIZPRISM のロゴは仮の文字です。</p>
+  </div>
+</footer>
+
+<script src="page.js"></script>
+<script src="glass.js"></script>
+</body>
+</html>
