@@ -6,7 +6,7 @@ MIZPRISM の公式サイト https://mizprism.github.io/ の中身です。MIZPRI
 
 | ファイル | 内容 |
 | --- | --- |
-| `index.html` | トップのページ。MizFR World と MizEye の紹介と、問い合わせ先を載せています |
+| `index.html` | トップのページ。MizFR World の紹介と、問い合わせ先を載せています |
 | `manual.html` | MizFR World の説明書の全文です。購入した zip に入っている説明書と同じ原稿から作っています |
 | `site.css`、`glass.js`、`page.js`、`toc.js` | ページの見た目と動き |
 | `assets/` | 背景の写真、ロゴ、共有用の画像、アイコン |

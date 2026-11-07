@@ -184,8 +184,6 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 /* "World" is part of the MizFR logo, so it keeps Lexend Zetta's own spacing as on the first BOOTH image
    (measured: letter gaps 0.36 of the ink height there; the 0.4em added for the other thin lines made 0.88) */
 .mizfr .thin { font-size: clamp(2rem, 4.6vw, 4.5rem); margin-top: -0.35em; color: var(--mizfr-blue); letter-spacing: 0; }
-.mizeye-name { display: block; font-family: 'IBM Plex Sans JP', sans-serif; font-weight: 700; font-size: clamp(4.5rem, 13vw, 11.25rem); color: var(--blue); letter-spacing: 0; line-height: 1; }
-.mizeye .thin { font-size: clamp(0.9rem, 2.4vw, 2.25rem); text-align: left; margin-top: 0.5em; }   /* 1/5 of the name or less */
 .facts { margin: 0; }
 .facts .what { margin: 0 0 18px; font-size: 22px; font-weight: 500; line-height: 1.6; }
 .facts .what span { display: inline-block; }
