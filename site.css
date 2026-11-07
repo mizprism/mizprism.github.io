@@ -162,10 +162,6 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
   .logo, .mark-wrap .spark { animation: none; }
 }
 
-/* ---- the strips between sections ---- */
-.strip-row { position: relative; height: calc(var(--t) * 0.55); margin: 0 var(--o); }
-.strip-row .glass, .strip-row .shade { inset: 0; }
-
 /* ---- products ---- */
 .product { padding: clamp(72px, 10vw, 140px) calc(var(--o) + var(--t)) clamp(72px, 10vw, 140px); }
 .product-in { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 40px 64px; align-items: center; }
