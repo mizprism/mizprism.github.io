@@ -18,7 +18,7 @@ MIZPRISM の公式サイト https://mizprism.github.io/ の中身です。MIZPRI
 
 ## フォントと画像
 
-フォントはどれも SIL Open Font License 1.1 で、各フォルダーに `LICENSE` と、入手元を書いた `SOURCE.txt` を置いています。背景の写真は ChatGPT で生成した画像で、MIZPRISM のロゴはいまは仮の文字です。
+フォントはどれも SIL Open Font License 1.1 で、各フォルダーに `LICENSE` と、入手元を書いた `SOURCE.txt` を置いています。背景の写真は ChatGPT で生成した画像です。
 
 ## 問い合わせ
 

@@ -104,9 +104,8 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
   display: grid;
   place-items: center;
 }
-/* One column, as on a card: the logo, one sentence, a line, the four places on this site as blocks
-   of one width, the two places elsewhere, a line, the note. Everything shares the column's width and
-   its centre line. */
+/* One column, as on a card: the logo, one sentence, a line, the three places on this site as blocks
+   of one width, the three places elsewhere. Everything shares the column's width and its centre line. */
 .hero { --card-w: 400px; }
 .card { width: min(var(--card-w), 100%); display: grid; justify-items: center; text-align: center; }
 .mark-wrap { position: relative; width: 100%; }
@@ -133,7 +132,6 @@ a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .elsewhere { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 32px; margin: 22px 0 0; padding: 0; list-style: none;
   font-family: 'Lexend Zetta', sans-serif; font-weight: 200; font-size: 13px; line-height: 1.6; letter-spacing: 0.3em; }
 .elsewhere a { margin-right: -0.3em; }
-.note { margin: 0; font-size: 12px; line-height: 1.6; color: var(--ink-2); }
 
 /* a narrow screen: the three places elsewhere stay on one line (they took two at 320 px) */
 @media (max-width: 360px) {
